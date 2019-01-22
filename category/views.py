@@ -28,3 +28,13 @@ def del_category(request,id):
     if request.method == 'GET':
         Category.objects.filter(id=id).first().delete()
         return HttpResponseRedirect(reverse('category:add_category'))
+
+def update_category(request,id):
+    if request.method == 'GET':
+        category = Category.objects.filter(id=id).first()
+        return render(request,'update-category.html',{'category':category})
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        alias = request.POST.get('alias')
+        Category.objects.filter(id=id).update(category_name=name,aliases=alias)
+        return HttpResponseRedirect(reverse('category:add_category'))

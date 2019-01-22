@@ -57,8 +57,7 @@
           </form>
         </div>
       </div>
-    </nav>@media (min-width: 992px)
-.col-md-offset-2
+    </nav>
   </header>
   <div class="row">
     <aside class="col-sm-3 col-md-2 col-lg-2 sidebar">
@@ -101,7 +100,7 @@
         </li>
       </ul>
     </aside>
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-lg-10 col-md-offset-2 main" id="main" style="margin-left:-3.3333%">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-lg-10 col-md-offset-2 main" id="main" >
       <div class="row">
         <form action="" method="post" class="add-article-form">
           {% csrf_token %}
@@ -139,7 +138,7 @@
                   {% for subcategory in subcategorys%}
                   <li>
                     <label>
-                      <input name="category_id" type="radio" value="{{ subcategory.id }}" >
+                      <input name="category_id" type="radio" checked="checked" value="{{ subcategory.id }}" >
                       {{ subcategory.subcategory_name }} <em class="hidden-md">( 栏目ID: <span>{{ forloop.counter }}</span> )</em>
                     </label>
                   </li>

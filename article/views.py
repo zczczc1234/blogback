@@ -55,4 +55,9 @@ def update_article(request,id):
     if request.method == 'GET':
         article = Article.objects.filter(id=id).first()
         print(article)
-        return render(request,'update-article.html')
+        return render(request,'update-article.html',{'article':article})
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        article = Article.objects.filter(id=id).update(title=title,content=content)
+        return HttpResponseRedirect(reverse('article:index'))
